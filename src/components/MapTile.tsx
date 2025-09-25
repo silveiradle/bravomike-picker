@@ -1,5 +1,14 @@
 import { useMemo } from "react"
 
+import dust2 from "../assets/maps/dust2.png"
+import ancient from "../assets/maps/ancient.png"
+import mirage from "../assets/maps/mirage.png"
+import inferno from "../assets/maps/inferno.png"
+import nuke from "../assets/maps/nuke.png"
+import overpass from "../assets/maps/overpass.png"
+import train from "../assets/maps/train.png"
+import noimage from "../assets/maps/noimage.png"
+
 interface MapTileProps {
   map: string
   status: "free" | "banned" | "picked"
@@ -7,43 +16,32 @@ interface MapTileProps {
 }
 
 const MAPS: Record<string, { name: string; img: string }> = {
-  dust2: { name: "Dust 2", img: "../src/assets/maps/dust2.png" },
-  ancient: { name: "Ancient", img: "../src/assets/maps/ancient.png" },
-  mirage: { name: "Mirage", img: "../src/assets/maps/mirage.png" },
-  inferno: { name: "Inferno", img: "../src/assets/maps/inferno.png" },
-  nuke: { name: "Nuke", img: "../src/assets/maps/nuke.png" },
-  overpass: { name: "Overpass", img: "../src/assets/maps/overpass.png" },
-  vertigo: { name: "Train", img: "../src/assets/maps/train.png" },
+  dust2: { name: "Dust 2", img: dust2 },
+  ancient: { name: "Ancient", img: ancient },
+  mirage: { name: "Mirage", img: mirage },
+  inferno: { name: "Inferno", img: inferno },
+  nuke: { name: "Nuke", img: nuke },
+  overpass: { name: "Overpass", img: overpass },
+  train: { name: "Train", img: train },
 }
 
 const MapTile: React.FC<MapTileProps> = ({ map, status, onClick }) => {
-  const meta = useMemo(() => MAPS[map] ?? { name: "Desconhecido", img: "../src/assets/maps/noimage.png" }, [map])
+  const meta = useMemo(() => MAPS[map] ?? { name: "Desconhecido", img: noimage }, [map])
 
   const border =
-    status === "banned"
-      ? "border-red-500"
-      : status === "picked"
-        ? "border-green-500"
-        : "border-yellow-400"
+    status === "banned" ? "border-red-500" : status === "picked" ? "border-green-500" : "border-yellow-400"
 
   const textBG =
-    status === "banned"
-      ? "bg-red-500"
-      : status === "picked"
-        ? "bg-green-500"
-        : "bg-yellow-400"
+    status === "banned" ? "bg-red-500" : status === "picked" ? "bg-green-500" : "bg-yellow-400"
 
-  const cursor =
-    status === "banned"
-      ? "cursor-not-allowed"
-      : "cursor-pointer"
+  const cursor = status === "banned" ? "cursor-not-allowed" : "cursor-pointer"
 
   const shadow =
     status === "picked"
       ? "shadow-[0_0_0_3px_rgba(34,197,94,0.35)]"
       : status === "banned"
-        ? "shadow-[0_0_0_3px_rgba(239,68,68,0.25)]"
-        : "shadow-[0_6px_18px_rgba(0,0,0,0.15)]"
+      ? "shadow-[0_0_0_3px_rgba(239,68,68,0.25)]"
+      : "shadow-[0_6px_18px_rgba(0,0,0,0.15)]"
 
   const grayscale = status === "banned" ? "grayscale opacity-70" : ""
 
@@ -68,9 +66,7 @@ const MapTile: React.FC<MapTileProps> = ({ map, status, onClick }) => {
         draggable={false}
       />
 
-      <div className={[
-        "w-full h-1/6 flex items-center justify-center uppercase text-sm font-semibold text-white ", textBG
-      ].join(" ")}>
+      <div className={["w-full h-1/6 flex items-center justify-center uppercase text-sm font-semibold text-white ", textBG].join(" ")}>
         {meta.name}
       </div>
 

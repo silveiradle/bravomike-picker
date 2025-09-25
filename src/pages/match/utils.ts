@@ -8,7 +8,7 @@ export function makeDefaultMaps(): MapStatus[] {
     { map: "inferno", status: "free" },
     { map: "nuke", status: "free" },
     { map: "overpass", status: "free" },
-    { map: "vertigo", status: "free" },
+    { map: "train", status: "free" },
   ];
 }
 

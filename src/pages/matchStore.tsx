@@ -10,7 +10,7 @@ const DEFAULT_MAPS: MapStatus[] = [
   { map: "inferno", status: "free" },
   { map: "nuke", status: "free" },
   { map: "overpass", status: "free" },
-  { map: "vertigo", status: "free" },
+  { map: "train", status: "free" },
 ]
 
 export function MatchProvider({ children }: { children: React.ReactNode }) {

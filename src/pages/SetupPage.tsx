@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { useMatch } from "./useMatch"
 import Layout from "../layout/Layout"
 import type { MatchType } from "./match/types"
+import logo from "../assets/logo.png"
 
 export default function SetupPage() {
     const { setSetup } = useMatch()
@@ -23,10 +24,10 @@ export default function SetupPage() {
     return (
         <Layout>
             <div className="max-w-xl mx-auto p-6 space-y-6">
-                <img src="../src/assets/logo.png" alt="Logo" className="h-92 hover:scale-105 transition-transform" />
+                <img src={logo} className="h-92 hover:scale-105 transition-transform" />
                 <h1 className="text-2xl font-bold text-yellow-400">Configurar Partida</h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <input value={teamA} onChange={e => setTeamA(e.target.value)} placeholder="Time 1"   className="h-10 rounded-lg border px-3 md:col-span-1 text-white bg-slate-900"/>
+                    <input value={teamA} onChange={e => setTeamA(e.target.value)} placeholder="Time 1" className="h-10 rounded-lg border px-3 md:col-span-1 text-white bg-slate-900" />
                     <input value={teamB} onChange={e => setTeamB(e.target.value)} placeholder="Time 2" className="h-10 rounded-lg border px-3 md:col-span-1 text-white bg-slate-900" />
                     <select
                         value={matchType}
